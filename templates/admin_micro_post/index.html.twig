@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}All Post{% endblock %}
+
+{% block body %}
+
+    <div class="border-b">
+    {{include('admin_shared/_menu.html.twig')}}
+    </div>
+<div class="mx-5">
+    <h1 class="font-bold text-xl mt-4">All Post</h1>
+    <div class="flex items-center">
+        <p class="mr-5 font-semibold">Do you want create a new post?</p>
+        <button class="bg-[#faab57] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><a href="{{ path('app_admin_micro_post_new') }}">Create new</a></button>
+    </div>
+   <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-10">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
+        
+        <thead class="text-xs text-gray-700 uppercase bg-gray-200">
+            <tr>
+                <th scope="col" class="px-6 py-3">Id</th>
+                <th scope="col" class="px-6 py-3">Title</th>
+                <th scope="col" class="px-6 py-3">Text</th>
+                <th scope="col" class="px-6 py-3">CreatedAt</th>
+                <th scope="col" class="px-6 py-3">Image</th>
+                <th scope="col" class="px-6 py-3">actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for micro_post in micro_posts %}
+            <tr class="bg-white border-b">
+                <td class="px-6 py-4">{{ micro_post.id }}</td>
+                <td class="px-6 py-4">{{ micro_post.title }}</td>
+                <td class="px-6 py-4">{{ micro_post.text }}</td>
+                <td class="px-6 py-4">{{ micro_post.createdAt ? micro_post.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td class="px-6 py-4">{{ micro_post.image }}</td>
+                <td class="px-6 py-4 flex">
+                    <a class="font-medium text-blue-600  hover:underline mr-3" href="{{ path('app_admin_micro_post_show', {'id': micro_post.id}) }}">show</a>
+                    <a class="font-medium text-blue-600  hover:underline" href="{{ path('app_admin_micro_post_edit', {'id': micro_post.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+</div>   
+
+
+
+
+
+</div>
+
+{% endblock %}

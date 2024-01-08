@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MicroPost{% endblock %}
+
+{% block body %}
+    <h1>MicroPost</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ micro_post.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ micro_post.title }}</td>
+            </tr>
+            <tr>
+                <th>Text</th>
+                <td>{{ micro_post.text }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ micro_post.createdAt ? micro_post.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ micro_post.image }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_micro_post_index') }}">back to list</a>
+
+    <a href="{{ path('app_admin_micro_post_edit', {'id': micro_post.id}) }}">edit</a>
+
+    {{ include('admin_micro_post/_delete_form.html.twig') }}
+{% endblock %}

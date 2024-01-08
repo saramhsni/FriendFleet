@@ -4,6 +4,11 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
+    profiles: '/upload/profiles/'
+    profiles_directory: '%kernel.project_dir%/public%profiles%'
+
+    posts: '/upload/posts/'
+    posts_directory: '%kernel.project_dir%/public%posts%'
 
 services:
     # default configuration for services in *this* file
@@ -17,7 +22,7 @@ services:
         resource: '../src/'
         exclude:
             - '../src/DependencyInjection/'
-            - '../src/Entity/'
+            # - '../src/Entity/'
             - '../src/Kernel.php'
 
     # add more service definitions when explicit configuration is needed

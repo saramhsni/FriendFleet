@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create new form{% endblock %}
+
+{% block body %}
+<div class="min-h-screen bg-gradient-to-r from-[#D6D6D6] to-[#F9EFD4]">
+    {{include('micro_post/_menu.html.twig')}}
+    <div class="mx-5 md:mx-15 xl:mx-20">
+    {{include('micro_post/_form.html.twig')}}
+    </div>
+</div>
+{% endblock %}

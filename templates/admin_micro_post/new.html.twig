@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New MicroPost{% endblock %}
+
+{% block body %}
+ <div class="border-b">
+    {{include('admin_shared/_menu.html.twig')}}
+</div>
+
+<div>
+    <h1 class="font-bold text-xl mt-4">Create new MicroPost</h1>
+
+    {{ include('admin_micro_post/_form.html.twig') }}
+
+    <a href="{{ path('app_admin_micro_post_index') }}">back to list</a>
+</div>
+{% endblock %}

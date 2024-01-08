@@ -1,0 +1,7 @@
+    
+    {% if post.image %}
+        <img src="{{ asset('upload/posts/' ~ post.image)}}" class="inline-block h-{{hsize}} w-{{wsize}} "/>
+    {# {% else %}
+        <div class="inline-block bg-gray-200 text-3xl h-{{hsize}} w-{{wsize}}"></div> #}
+    {% endif %}
+

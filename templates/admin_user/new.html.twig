@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New User{% endblock %}
+
+{% block body %}
+<div class="border-b">
+    {{include('admin_shared/_menu.html.twig')}}
+    </div>
+    <div class="mx-5">
+    <h1 class="font-bold text-xl mt-4">Create new User</h1>
+
+    {{ include('admin_user/_form.html.twig') }}
+
+    <a href="{{ path('app_admin_user_index') }}" class="font-semibold text-lg mt-4 hover:underline"> back to list</a>
+    </div>
+{% endblock %}

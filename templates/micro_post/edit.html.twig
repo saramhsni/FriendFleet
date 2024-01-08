@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit the post{% endblock %}
+
+{% block body %}
+    {{include ('micro_post/_menu.html.twig')}}
+    
+    {{ form_start(form, {'attr':{'novalidate':'novalidate'}})}}
+
+        <div>
+            {{form_errors(form)}}
+        </div>
+
+        <div >
+            {{form_label(form.title, 'Please enter the title', {'label_attr':{'class':'block text-sm text-gray-700 font-medium ml-14 mt-5'}})}}
+            {{form_widget(form.title, {'attr':{'class':'block w-9/12  shadow-sm border-gray-300 rounded-md border p-2 mt-1 mb-2 mx-10'}})}}
+            {{form_errors(form.title)}}
+        </div>
+
+        <div>
+            {{form_label(form.text, 'Please enter the text', {'label_attr':{'class':'block text-sm text-gray-700 font-medium ml-14 mt-5'}})}}
+            {{form_widget(form.text, {'attr':{'class':'block w-9/12  shadow-sm border-gray-300 rounded-md border p-2 mt-1 mb-2 mx-10'}})}}
+            {{form_errors(form.text)}}
+        </div>
+        <div class="flex">
+            
+            <div>
+                {{form_label(form.postImage, 'Please upload your image', {'label_attr':{'class':'block text-sm text-gray-700 font-medium ml-14 mt-5'}})}}
+                {{form_widget(form.postImage, {'attr':{'class':'block w-9/12 mt-1 mb-2 mx-10'}})}}
+                {{form_errors(form.postImage)}}
+            </div>
+            <div>
+            {% if post.image %}
+                <img src="{{ asset('upload/posts/' ~ post.image)}}" class="inline-block h-64 w-96 "/>
+            {% endif %}
+            </div>
+        </div>
+
+        <div>
+            <button type="submit" class="block w-9/12 text-white bg-[#dfa845] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm focus:outline-none p-2 mx-10 mt-4 mb-2">Save</button>
+        </div>
+
+    {{form_end(form)}}
+{% endblock %}

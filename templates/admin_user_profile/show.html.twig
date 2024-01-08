@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}UserProfile{% endblock %}
+
+{% block body %}
+    <h1>UserProfile</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ user_profile.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ user_profile.name }}</td>
+            </tr>
+            <tr>
+                <th>Bio</th>
+                <td>{{ user_profile.bio }}</td>
+            </tr>
+            <tr>
+                <th>Profession</th>
+                <td>{{ user_profile.profession }}</td>
+            </tr>
+            <tr>
+                <th>DateOfBirth</th>
+                <td>{{ user_profile.dateOfBirth ? user_profile.dateOfBirth|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ user_profile.image }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_user_profile_index') }}">back to list</a>
+
+    <a href="{{ path('app_admin_user_profile_edit', {'id': user_profile.id}) }}">edit</a>
+
+    {{ include('admin_user_profile/_delete_form.html.twig') }}
+{% endblock %}

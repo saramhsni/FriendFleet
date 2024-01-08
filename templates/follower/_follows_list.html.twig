@@ -1,0 +1,43 @@
+{% if users|length > 0 %}
+<div class="{{ containerClass | default('grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-8') }}">
+    {% for otherUser in users %}
+        <div class="flex justify-between items-center">
+            <div class="">
+                <a href="{{ path('app_profile', { id: otherUser.id })}}">
+                    <div class="text-lg">
+                        {{ otherUser.userProfile.name ?? otherUser.email }}
+                    </div>
+                    <div class="text-gray-500">
+                    {{ include('shared/_avatar.html.twig',{profile: otherUser.userProfile, size:8})}}
+                        {{otherUser.email}}
+                    </div>
+                </a>
+            </div> 
+            {% if showButton %}
+            <div>
+                {{ include('follower/_follow_button.html.twig',{userToFollow : otherUser}) }}
+            </div> 
+            {# {% else %}
+            <div>
+                <a href="{{path('app_messages_send_person',{id:user.id})}}">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                    </svg>
+                </a>
+           </div> #}
+            {% endif %} 
+        </div>
+    {% endfor %}
+
+    </div>
+    {% else %}
+    <div class="w-full text-center">
+        <div class="font-bold text-gray-600">
+            Nothing to Show
+        </div>
+        <div class="text-gray-400">
+            The list is currently empty
+        </div>
+
+</div>
+{% endif %}

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User Profile-follows{% endblock %}
+
+{% block body %}
+
+<div class="min-h-screen bg-gradient-to-r from-[#D6D6D6] to-[#F9EFD4]">
+    <div>
+    {{include('micro_post/_menu.html.twig')}}
+    </div>
+    <div class="flex flex-col mx-5 md:mx-15 xl:mx-20">
+        {{include('profile/_profile_header.html.twig')}}
+        {{include('profile/_profile_tabs.html.twig')}}
+        {{include('follower/_follows_list.html.twig', { users: user.followers, showButton:true })}}
+</div>
+
+{% endblock %}
