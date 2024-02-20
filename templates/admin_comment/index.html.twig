@@ -3,35 +3,45 @@
 {% block title %}Comment index{% endblock %}
 
 {% block body %}
-    <h1>Comment index</h1>
+    {{include('admin_shared/_menu.html.twig')}}
+    <div class="p-4 mt-10 sm:ml-64">
+    <h1 class="font-bold text-xl mt-10">Comments Administration</h1>
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-10">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500 "> 
+                <thead class="text-xs text-gray-700 uppercase bg-gray-200">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">Id</th>
+                        <th scope="col" class="px-6 py-3">Comment</th>
+                        <th scope="col" class="px-6 py-3">Post</th>
+                        <th scope="col" class="px-6 py-3">Author</th>
+                        <th scope="col" class="px-6 py-3">CreatedAt</th>
+                        <th scope="col" class="px-6 py-3">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for comment in pagination  %}
+                    <tr class="bg-white border-b">
+                        <td class="px-6 py-4">{{ comment.id }}</td>
+                        <td class="px-6 py-4">{{ comment.text }}</td>
+                        <td class="px-6 py-4">{{ comment.post.id }}</td>
+                        <td class="px-6 py-4">{{ comment.author.pseudo }}</td>
+                        <td class="px-6 py-4">{{ comment.createdAt ? comment.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                        <td class="px-6 py-4 flex">
+                            <a class="font-medium text-[#1b734a] hover:underline hover:decoration-[#ee670d] " href="{{ path('app_admin_comment_show', {'id': comment.id}) }}">show</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="flex justify-center mt-4">
+            {{knp_pagination_render(pagination)}}
+        </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Text</th>
-                <th>CreatedAt</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for comment in comments %}
-            <tr>
-                <td>{{ comment.id }}</td>
-                <td>{{ comment.text }}</td>
-                <td>{{ comment.createdAt ? comment.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_admin_comment_show', {'id': comment.id}) }}">show</a>
-                    <a href="{{ path('app_admin_comment_edit', {'id': comment.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-    <a href="{{ path('app_admin_comment_new') }}">Create new</a>
+
 {% endblock %}

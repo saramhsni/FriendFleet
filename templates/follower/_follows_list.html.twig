@@ -4,12 +4,12 @@
         <div class="flex justify-between items-center">
             <div class="">
                 <a href="{{ path('app_profile', { id: otherUser.id })}}">
-                    <div class="text-lg">
-                        {{ otherUser.userProfile.name ?? otherUser.email }}
-                    </div>
-                    <div class="text-gray-500">
-                    {{ include('shared/_avatar.html.twig',{profile: otherUser.userProfile, size:8})}}
-                        {{otherUser.email}}
+                    {# <div class="text-lg">
+                        {{ otherUser.pseudo }}
+                    </div> #}
+                    <div class="text-gray-500 flex items-center ">
+                    {{ include('shared/_avatar.html.twig',{profile: otherUser.userProfile, size:10})}}
+                        <a class="ml-3" href="{{path('app_profile', {id: otherUser.id})}}">{{otherUser.pseudo}}</a>
                     </div>
                 </a>
             </div> 

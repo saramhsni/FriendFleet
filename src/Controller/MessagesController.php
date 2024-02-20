@@ -120,7 +120,9 @@ class MessagesController extends AbstractController
         $recipient = $manager->getRepository(User::class)->find($id);
         
         $message= new Messages;
+        $message->setRecipient($recipient);
         $form=$this->createForm(MessagesType::class ,$message);
+        $form->remove('recipient');
         
         $form->handleRequest($request);  //let the form get the data 
 
@@ -128,7 +130,7 @@ class MessagesController extends AbstractController
             
             $message->setSender($this->getUser());
             $message->setIsRead(false);
-            $message= $form->getData();
+            $message = $form->getData();
 
             $manager->persist($message);
             $manager->flush(); 

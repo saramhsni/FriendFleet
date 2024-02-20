@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminHomeController!{% endblock %}
+
+{% block body %}
+{{include('admin_shared/_menu.html.twig')}}
+    <div class="p-4 mt-12 sm:ml-64">
+        <p class="mt-10 font-bold">Welcome to FriendFleet Administration "{{app.user.pseudo}}"</p>
+
+        <p class="mt-8  ml-4 font-medium">
+            As an admin, you have access to various features for managing the site. Here are some key statistics:
+        </p>
+
+        <ul class="list-disc ml-8 mt-5">
+            <li class="mt-5 font-semibold"><a href="{{path('app_admin_micro_post_index')}}"> Number of MicroPosts: {{ microPostCount }}</a></li>
+            <li class="mt-5 font-semibold"><a href="{{path('app_admin_user_index')}}">Number of Users: {{ userCount }} </a></li>
+            <li class="mt-5 font-semibold"><a href="{{path('app_admin_user_profile_index')}}">Number of Users Profiles: {{ userProCount }} </a></li>
+        </ul>
+    </div>
+{% endblock %}

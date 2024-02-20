@@ -3,28 +3,45 @@
 {% block title %}Comment{% endblock %}
 
 {% block body %}
-    <h1>Comment</h1>
+
+{{include('admin_shared/_menu.html.twig')}}
+
+<div class="p-4 mt-12 sm:ml-64">
+    <button class="mt-5 flex font-semibold hover:underline hover:font-bold ">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+        </svg>
+
+        <a href="{{ path('app_admin_comment_index') }}">back to list</a>
+    </button>
+    <h1 class="font-bold text-xl mt-4">Comment</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th class="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap">Id</th>
                 <td>{{ comment.id }}</td>
             </tr>
             <tr>
-                <th>Text</th>
+                <th class="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap">Text</th>
                 <td>{{ comment.text }}</td>
             </tr>
             <tr>
-                <th>CreatedAt</th>
+                <th class="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap">Post</th>
+                <td>{{ comment.post.id }}</td>
+            </tr>
+            <tr>
+                <th class="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap">Author</th>
+                <td>{{ comment.author.pseudo }}</td>
+            </tr>
+            <tr>
+                <th class="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap">CreatedAt</th>
                 <td>{{ comment.createdAt ? comment.createdAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_admin_comment_index') }}">back to list</a>
-
-    <a href="{{ path('app_admin_comment_edit', {'id': comment.id}) }}">edit</a>
 
     {{ include('admin_comment/_delete_form.html.twig') }}
+</div>
 {% endblock %}

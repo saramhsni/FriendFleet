@@ -1,12 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Create new form{% endblock %}
+{% block title %}Create new Post{% endblock %}
 
 {% block body %}
-<div class="min-h-screen bg-gradient-to-r from-[#D6D6D6] to-[#F9EFD4]">
+<div class="min-h-screen bg-gradient-to-r from-[#D6D6D6] to-[#F9EFD4]" id="contain">
     {{include('micro_post/_menu.html.twig')}}
-    <div class="mx-5 md:mx-15 xl:mx-20">
+    <div class="mx-3 md:mx-6 lg:mx-8" id="profil-posts">
+    <p class="mt-5 mb-8 text-xl font-semibold text-gray-700 mx-2 md:mx-8">Share a post with your friends</p>
     {{include('micro_post/_form.html.twig')}}
+    </div>
+   
+     <div class="mt-8" id="foot">
+        {{include('Shared/_footer.html.twig')}}
     </div>
 </div>
 {% endblock %}

@@ -27,17 +27,17 @@ class MessagesType extends AbstractType
                     'class' => User::class,
                     'choice_label' => 'email',
                     'label_attr' =>[
-                        'class' => 'block text-sm text-gray-700 font-medium ml-14 mt-5'
+                        'class' => 'block text-sm text-gray-700 font-medium mx-8 mt-5'
                     ],
                     'attr' => [
-                        'class' => 'block w-9/12 shadow-sm border-gray-300 rounded-md border p-2 mt-1 mb-2 mx-10',
+                        'class' => 'block  shadow-sm border-gray-300 rounded-md border p-2 mt-1 mb-2 mx-8 registration_form_input',
                     ]
                 ]);
             }
         $builder->add('submit', SubmitType::class, [
-            'label' => 'Send',
+            'label' => 'Send message',
             'attr' => [
-                'class' => 'block w-9/12 text-white bg-[#dfa845] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm focus:outline-none p-2 mx-10 mt-4 mb-2', 
+                'class' => 'w-48 mr-3 text-white font-semibold focus:ring-4 focus:border-2 hover:border-[#1b734a] hover:text-[#1b734a] font-medium rounded-lg text-sm px-5 py-2.5 mb-2 focus:ring-transparent ml-8 ', 
             ],
         ]);
        
@@ -48,6 +48,7 @@ class MessagesType extends AbstractType
         $resolver->setDefaults([
             'data_class' => Messages::class,
             'is_reply'=>false
+            
         ]);
     }
 }

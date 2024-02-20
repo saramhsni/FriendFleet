@@ -5,19 +5,53 @@ namespace App\Form;
 use App\Entity\UserProfile;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class UserProfile1Type extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name')
-            ->add('bio')
-            ->add('profession')
-            ->add('dateOfBirth')
-            ->add('image')
-            ->add('user')
+            ->add('name', null,[
+                'label_attr'=> ['class'=>'block text-gray-700 text-sm font-bold mb-2 mt-3'],
+                'attr'=>['class'=>'registration_form_input w-full rounded-md']
+            ])
+            ->add('bio', null,[
+                'label_attr'=> ['class'=>'block text-gray-700 text-sm font-bold mb-2 mt-3'],
+                'attr'=>['class'=>'registration_form_input w-full rounded-md']
+            ])
+            ->add('profession', null,[
+                'label_attr'=> ['class'=>'block text-gray-700 text-sm font-bold mb-2 mt-3'],
+                'attr'=>['class'=>'registration_form_input w-full rounded-md']
+            ])
+            ->add('dateOfBirth', DateType::class, [
+               
+                'widget' => 'single_text',
+                'label_attr'=> ['class'=>'block text-gray-700 text-sm font-bold mb-2 mt-3'],
+                'attr'=>['class'=>'registration_form_input w-full rounded-md']
+            ])
+            ->add('avatarImage', FileType::class, [
+                'label' => 'Avatar image (JPG or PNG file)',
+                'mapped' => false,
+                'required' => false,
+                'constraints' =>[
+                   new File([
+                        'maxSize'=>'5000K',
+                        'mimeTypes'=>[
+                            'image/jpeg',
+                            'image/png'
+                        ],
+                        'mimeTypesMessage'=>'Please Upload a PNG/JPEG image'
+                    ])
+                ]
+            ])
+            ->add('user',null,[
+                'label_attr'=> ['class'=>'block text-gray-700 text-sm font-bold mb-2 mt-3'],
+                'attr'=>['class'=>'registration_form_input w-full rounded-md']
+            ])
         ;
     }
 

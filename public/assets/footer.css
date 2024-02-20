@@ -1,0 +1,27 @@
+.container-main-footer{
+    width: 100%;
+    background-color: rgba(171, 178, 185, 0.25);
+}
+.footer-title{
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+.footer-link ul{
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+.footer-title h3{
+    font-weight: bold;
+}
+.footer-link li{
+    margin-right: 30px;
+    padding: 10px 0;
+}
+
+@media only screen and (max-width: 768px){
+    .footer-link ul{
+        flex-wrap: wrap;
+    }
+}

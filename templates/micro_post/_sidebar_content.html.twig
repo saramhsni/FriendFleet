@@ -1,0 +1,16 @@
+ <div class="home-side">
+    <div class="side-follows">
+        <div class="header-side">Follows</div>
+        <div class="body-side">
+            {% set containerClass = 'grid grid-cols-1 gap-4 mt-5' %}
+            {{include('follower/_follows_list.html.twig', { users: user.follows, showButton:false, containerClass: containerClass  })}}
+        </div>
+    </div>
+    <div class="side-followers">
+        <div class="header-follower-side ">Followers</div>
+        <div class="body-side">
+            {% set containerClass = 'grid grid-cols-1 gap-4' %}
+            {{include('follower/_follows_list.html.twig', { users: user.followers, showButton:false, containerClass: containerClass  })}}   
+        </div>
+    </div>
+</div>

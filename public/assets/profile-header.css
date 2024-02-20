@@ -1,0 +1,114 @@
+.profile-header-container{
+    display: flex;
+    justify-content: space-evenly;
+}
+.profile-information{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.profile-pseudo{
+    font-weight: 800;
+    font-size: bold;
+}
+.profile-detail{
+    margin-left: 20px;
+}
+.profile-detail p{
+    text-align: center;
+}
+.profile-detail span p{
+    font-weight: 500;
+    font-size: medium;
+    color: rgb(52, 52, 52);
+}
+.icon-profile{
+    display: flex;
+    align-items: center;
+    margin-top: 7px;
+}
+.btn-message, .follow-button-design{
+    background-image: linear-gradient(to right, #ee670d , #e99343);
+    border-radius: 0 0.5rem 0 0.5rem;
+    padding: 5px 20px 5px 20px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    font-size: large;
+    margin-bottom: 10px;
+    border: 2px solid transparent;
+}
+.btn-message:hover, .follow-button-design:hover{
+    border: 2px solid #337F5B;
+    color: #1b734a;
+}
+.btn-profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.btn-addpost{
+    margin: 0px 0 10px 0;
+    padding: 5px 20px 5px 20px;
+    border-radius:0 0.5rem 0 0.5rem;
+    background-image: linear-gradient(to right, #ee670d , #e99343) !important;
+    font-weight: bold;
+    font-size: large;
+    cursor: pointer;
+    color: white;
+    border: 2px solid transparent;
+}
+.btn-addpost:hover{
+    background-color: #ee670d;
+    border: 2px solid #337F5B;
+    color: #1b734a;
+}
+.btn-editinformation, .btn-completeinformation{
+    background-image: linear-gradient(to right, #ee670d , #e99343) !important;
+    border: 2px solid transparent;
+    border-radius:0 0.5rem 0 0.5rem;
+    padding: 5px 20px 5px 20px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    font-size: large;
+    
+}
+.btn-editinformation:hover, .btn-completeinformation:hover{
+    border: 2px solid #337F5B;
+    color: #1b734a;
+}
+.bio-mobile{
+    display: none;
+}
+.bio-web{
+    font-weight: 500;
+    font-size: large;
+    margin: 15px 0 10px 100px;
+}
+
+
+@media only screen and (max-width: 768px){
+    .profile-header-container{
+        flex-direction: column;
+    }
+    .btn-profile{
+        margin: 10px 30px 0 30px;
+    }
+    .profile-information{
+        margin: 0 8px 0 8px;
+    }
+    .profile-detail{
+        margin-left: 8px;
+    }
+    .bio-mobile{
+        display: block;
+        margin:15px 0 10px 15px;
+        font-weight: 500;
+        font-size: medium;
+    }
+    .bio-web{
+        display: none;
+        
+    }
+}

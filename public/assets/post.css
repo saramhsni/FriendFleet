@@ -1,0 +1,272 @@
+.home-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    grid-gap: 30px; 
+    margin: 50px 10px 10px 10px;  
+}
+
+.home-post{
+    background-color: #b8b8b8;
+    grid-column: span 3; 
+    display: grid;
+    align-items: center;
+    border-radius: 15px 0 0 15px;
+    
+}
+.post-scroll{
+    max-height:100vh; /* Set max height to 100% of the viewport height */
+    overflow-y: auto;
+}
+
+.home-side{
+    grid-column: span 1; 
+}
+.post-container{
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px 0 0 15px;
+    margin: 5px;
+}
+.post-header{
+    display: flex;
+    justify-content: space-between; 
+    margin: 0 10px 0 10px;
+}
+.information-post{
+    display: flex;
+    align-items: center;
+    margin: 15px;    
+}
+.information-post h3{
+    margin-left: 8px;
+    font-weight: bold;
+}
+.icon-post{
+    display: flex; 
+    align-items: center;  
+ 
+}
+.detail-post h2{
+    margin-left: 20px;
+    font-size: large;
+    font-weight: 600;
+}
+
+.post-title{
+    margin-bottom: 10px;
+}
+.icon-action{
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+}
+.icon-action-span{
+    display: flex;
+}
+.icon-action span{
+    display: flex;
+    margin: 10px;
+}
+.post-text{
+    display: flex;
+    margin: 10px;
+}
+.post-text h3{
+    font-weight: bold;
+    font-size: medium;
+}
+.post-text p{
+   margin-left: 20px; 
+}
+.date-post p{
+    margin: 10px;
+}
+.home-side{
+    max-height:100vh;
+    overflow-y: auto;
+}
+.side-follows{
+    margin: 10px;
+    background-color: #b8b8b8;
+    border-radius: 0 15px 0 0;
+    height: 350px;
+    margin-bottom: 40px;
+ 
+}
+.header-side {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    background-color:#ee670d;
+    border-radius: 0 15px 0 0;
+    color: white;
+    font-weight: bold;
+    font-size: large;
+    padding: 10px;
+    
+}
+.body-side{
+    display: flex;
+    align-items: center;
+    margin: 15px;
+    background-color: white;
+    border-radius: 0 15px 0 0;
+    padding: 10px;
+    max-height: 260px;
+    overflow-y: auto;
+}
+.side-followers{
+    margin: 10px;
+    background-color: #b8b8b8;
+    border-radius: 0 15px 0 0;
+    height: 350px;
+}
+.header-follower-side{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    background-color: #ee670d;
+    border-radius: 0 15px 0 0;
+    color: white;
+    font-weight: bold;
+    font-size: large;
+    padding: 10px;
+}
+/* ********************comments ************************* */
+.comment-container{
+    max-height: 200px;
+    overflow-y: auto;
+
+}
+.comment-information{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+.comment-detail{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #cfcece;
+    background-color: #f1efef;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 20px 10px 20px;
+    box-shadow: #cfcece;
+}
+.comment-icons{
+    display: flex;
+}
+.comment-date{
+    margin-left: 8px;
+}
+.comment-date a{
+    font-weight: bold;
+    font-size: medium;
+}
+.comment-date p{
+    font-weight: normal;
+    font-size: small;
+    color: rgb(123, 122, 122);
+}
+.no-comment{
+    font-size: medium;
+    font-weight: normal;
+    text-align: center;
+    padding: 5px;
+}
+
+
+.card-container {
+    display: flex;
+    max-width: 100%;
+  }
+  
+  .card-image {
+    flex: none;
+    height: 48px;
+    width: 48px;
+    background-size: cover;
+    border-radius: 8px 0 0 0;
+  }
+  
+  .card-content {
+    flex: 1;
+    border: 1px solid #ccc;
+    border-radius: 0 0 8px 8px;
+    background-color: #fff;
+    padding: 16px;
+  }
+  
+  .membership-indicator {
+    color: #666;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .card-title {
+    color: #333;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  
+  .card-description {
+    color: #555;
+    font-size: 16px;
+  }
+  
+  .card-author {
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+  }
+  
+  .author-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+  }
+  
+  .author-details {
+    font-size: 14px;
+  }
+  
+  .author-name {
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .author-date {
+    color: #666;
+  }
+  
+
+
+
+
+
+
+
+/* ******************** responsive ************************* */
+
+@media only screen and (max-width: 768px) {
+    .home-container {
+        grid-template-columns: 1fr; 
+    }
+
+    .home-post {
+        grid-column: span 1; 
+    }
+
+    .home-side {
+        display: none; 
+    }
+}
+@media only screen and (max-width: 1100px){
+    .home-container {
+        grid-gap: 5px;
+        margin: 50px 5px 5px 5px;
+    }
+}

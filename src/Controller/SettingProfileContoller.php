@@ -4,22 +4,25 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\UserProfile;
-use App\Form\ProfileImageType;
 use App\Form\UserProfileType;
+use App\Form\ProfileImageType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
-use Symfony\Component\String\Slugger\SluggerInterface;
 
 class SettingProfileContoller extends AbstractController
 {
     #[Route('/setting/profile', name: 'app_setting_profile')]
+    #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function profile(Request $request, EntityManagerInterface $entityManager): Response
     {   
         /** @var User $user */
+        
         $user = $this->getUser();
         $userProfile = $user->getUserProfile() ?? new UserProfile;
 
@@ -97,5 +100,6 @@ class SettingProfileContoller extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
 
 }

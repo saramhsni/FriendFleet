@@ -3,36 +3,60 @@
 {% block title %}MicroPost{% endblock %}
 
 {% block body %}
-    <h1>MicroPost</h1>
 
+    {{include('admin_shared/_menu.html.twig')}}
+
+<div class="p-4 mt-12 sm:ml-64">
+    <button class="mt-5 flex font-semibold hover:underline hover:font-bold ">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+        </svg>
+
+        <a href="{{ path('app_admin_micro_post_index') }}">back to list</a>
+    </button>
+    <h1 class="font-bold text-xl mt-4">MicroPost Administration</h1>
+    
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th class="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap">Id</th>
                 <td>{{ micro_post.id }}</td>
             </tr>
             <tr>
-                <th>Title</th>
+                <th class="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap">Author</th>
+                <td>{{ micro_post.author.email }}</td>
+            </tr>
+            <tr>
+                <th class="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap">Title</th>
                 <td>{{ micro_post.title }}</td>
             </tr>
             <tr>
-                <th>Text</th>
+                <th class="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap">Text</th>
                 <td>{{ micro_post.text }}</td>
             </tr>
             <tr>
-                <th>CreatedAt</th>
+                <th class="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap">CreatedAt</th>
                 <td>{{ micro_post.createdAt ? micro_post.createdAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>Image</th>
-                <td>{{ micro_post.image }}</td>
+                <th class="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap">Image</th>
+                <td>{{ micro_post.image }}
+                    {% if micro_post.image %}
+                        <img src="{{ asset('upload/posts/' ~ micro_post.image)}}" class="inline-block h-64 w-96 "/>
+                    {% endif %}
+                
+                </td>
+                
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_admin_micro_post_index') }}">back to list</a>
+    <div class="flex">
+        
 
-    <a href="{{ path('app_admin_micro_post_edit', {'id': micro_post.id}) }}">edit</a>
+        <button class="bg-[#edca04] hover:bg-[#debd02] text-white font-bold py-2 px-11 rounded  mx-2 mb-4 mt-4"><a href="{{ path('app_admin_micro_post_edit', {'id': micro_post.id}) }}">edit</a></button>
 
-    {{ include('admin_micro_post/_delete_form.html.twig') }}
+        {{ include('admin_micro_post/_delete_form.html.twig') }}
+    </div>
+</div>
 {% endblock %}

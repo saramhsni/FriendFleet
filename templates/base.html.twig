@@ -8,33 +8,54 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
-        {# <link rel="stylesheet" href="{{ asset('assets/styles.css') }}"> #}
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <link rel="stylesheet" href="{{ asset('assets/login.css')}}">
+        <link rel="stylesheet" href="{{ asset('assets/styles.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/navbar.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/post.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/profile-header.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/profile-post.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/footer.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/form.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/admin.css') }}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
         {% block stylesheets %}
         {% endblock %}
 
         {% block javascripts %}
         {% endblock %}
-        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="{{ asset('assets/tailwind.js') }}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
         <script>
-            tailwind.config = {
-            theme: {
-                extend: {
-                colors: {
-                    clifford: '#da373d',
-                }
-                }
-            }
-            }
+            module.exports = {
+    theme: {
+        extend: {
+            colors: {
+                clifford: '#da373d',
+            },
+            fontFamily: {
+                custom: ['Comfortaa', 'sans-serif'],
+            },
+        },
+    },
+    corePlugins: {
+        preflight: false,
+    },
+};
+            
         </script>
     </head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap');
+    </style>
     <body>
-        <div>
-        {% for message in app.flashes('success') %}
-            <div style="color: green">{{message}}</div>
-        {% endfor %}
+        <div id="general">
         {% block body %}
+        {% for message in app.flashes('success') %}
+            <div style="color: green ">{{message}}</div>
+        {% endfor %}
         {% endblock %}
     </div>
     </body>

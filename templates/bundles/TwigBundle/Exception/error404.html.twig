@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="min-h-screen bg-gradient-to-r from-[#D6D6D6] to-[#F9EFD4]" id="contain">
+    <div class="flex flex-col justify-center items-center">
+        <h1 class="text-4xl font-extrabold text-[#ff0000] p-4 ">OUPSSSS! Page not found</h1>
+        <p class="text-3xl font-bold">
+            The requested page couldn't be located. Checkout for any URL
+            misspelling or <a class="text-[#008000] hover:underline" href="{{ path('app_login') }}">return to the login</a>.
+        </p>
+    </div>
+</div>
+
+{% endblock %}

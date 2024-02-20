@@ -45,4 +45,11 @@ class CommentRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+public function paginationQuery()
+   {
+       return $this->createQueryBuilder('m')
+           ->orderBy('m.id', 'ASC')
+           ->getQuery()
+       ;
+   }
 }

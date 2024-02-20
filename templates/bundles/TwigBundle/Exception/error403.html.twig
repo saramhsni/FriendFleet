@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="min-h-screen bg-gradient-to-r from-[#D6D6D6] to-[#F9EFD4]" id="contain">
+    <div class="flex flex-col justify-center items-center " id="profil-posts">
+        <h1 class="text-4xl font-extrabold text-[#ff0000] p-4">Access Denied</h1>
+        <p class="text-3xl font-bold p-4">We apologize for the inconvenience, but this page is accessible only for administrators of FriendFleet.</p>
+        
+        <a  class="text-3xl font-bold p-4" href="{{path('app_micro_post')}}">Go to <span class="text-[#008000] hover:underline">Home Page</span></a>
+    </div>
+</div>  
+ 
+{% endblock %}

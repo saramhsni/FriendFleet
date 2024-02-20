@@ -6,19 +6,27 @@ use App\Entity\Comment;
 use App\Form\Comment1Type;
 use App\Repository\CommentRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+#[IsGranted('ROLE_ADMIN')]
 #[Route('/admin/comment')]
 class AdminCommentController extends AbstractController
 {
     #[Route('/', name: 'app_admin_comment_index', methods: ['GET'])]
-    public function index(CommentRepository $commentRepository): Response
+    public function index(CommentRepository $commentRepository, Request $request, PaginatorInterface $paginator): Response
     {
+        $pagination = $paginator->paginate(
+            $commentRepository->paginationQuery(),
+            $request->query->get('page',1),
+            5
+        );
         return $this->render('admin_comment/index.html.twig', [
-            'comments' => $commentRepository->findAll(),
+            'pagination'=>$pagination
         ]);
     }
 

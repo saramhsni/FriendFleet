@@ -3,9 +3,9 @@
     <div>
         {{form_errors(form)}}
     </div>
-
+    {{ form_row(form._token) }}
     <div class="flex justify-center">
-        {{form_label(form.text, 'Please enter the comment', {'label_attr':{'class':'block text-sm text-gray-700 font-medium ml-14 mt-5 '}})}}
+        {{form_label(form.text, 'Please enter the comment', {'label_attr':{'class':'block text-sm text-gray-700 font-medium mt-5 '}})}}
     </div>
 
     <div class="flex justify-center">
@@ -13,7 +13,7 @@
     </div>
 
     <div class="flex justify-center">
-        <button type="submit" class="block w-4/12 shadow-sm border-transparent bg-[#00a7ff] hover:bg-[#0093ff] text-white rounded-md border p-2 mx-10 mt-4 mb-2">Add Comment</button>
+        <button type="submit" class="form-butt-reg">Edit Comment</button>
     </div>
 
 {{form_end(form)}}

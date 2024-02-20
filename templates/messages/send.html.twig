@@ -3,22 +3,25 @@
 {% block title %}Message{% endblock %}
 
 {% block body %}
-    <div class="min-h-screen bg-gradient-to-r from-[#D6D6D6] to-[#F9EFD4]">
+    <div class="min-h-screen bg-gradient-to-r from-[#D6D6D6] to-[#F9EFD4]" id="contain">
         <div>
             {{include('micro_post/_menu.html.twig')}}
         </div>
-            <div class="mx-2 md:mx-15 xl:mx-20">
+            <div class="mx-2 md:mx-15 xl:mx-20" id="profil-posts">
                 <div class="flex flex-col mx-6 my-4">
-                    {# <h1 class="mb-4">Messages</h1> #}
-                    <h1 class="mb-4 font-bold">Send message</h1>
+                    <h1 class="mb-4 mx-8 font-bold">Send message</h1>
                     {{include('messages/_form.html.twig')}}
                   <div class="flex flex-col md:flex-row xl:flex-row">
-                        <button class="w-48 mr-3 text-white bg-[#dfa845] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 focus:outline-none " type="button" data-drawer-target="drawer-example" data-drawer-show="drawer-example" aria-controls="drawer-example">
+                        <button class="w-48 mr-3 font-semibold text-white focus:ring-4 focus:border-2 hover:border-[#1b734a] hover:text-[#1b734a] font-medium rounded-lg text-sm px-5 py-2.5 mb-2 focus:ring-transparent ml-8 " type="button" data-drawer-target="drawer-example" data-drawer-show="drawer-example" aria-controls="drawer-example">
                             MailBoxes
                         </button>
+                        
                     </div>
                 </div>
             </div>
         {{include('messages/_offcanvas.html.twig')}}
+        <div class="mt-8 " id="foot">
+        {{include('Shared/_footer.html.twig')}}
+    </div>
     </div>
 {% endblock %}

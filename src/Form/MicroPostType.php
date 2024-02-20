@@ -16,6 +16,7 @@ class MicroPostType extends AbstractType
         $builder
             ->add('title')
             ->add('text')
+            
             ->add('postImage', FileType::class, [
                 'label' => 'Post image (JPG or PNG file)',
                 'mapped' => false,

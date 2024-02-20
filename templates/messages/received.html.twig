@@ -3,11 +3,11 @@
 {% block title %}Received Message{% endblock %}
 
 {% block body %}
-    <div class="min-h-screen bg-gradient-to-r from-[#D6D6D6] to-[#F9EFD4]">
+    <div class="min-h-screen bg-gradient-to-r from-[#D6D6D6] to-[#F9EFD4]" id="contain">
         <div>
             {{include('micro_post/_menu.html.twig')}}
         </div>
-            <div class="mx-5 md:mx-15 xl:mx-20">
+            <div class="mx-5 md:mx-15 xl:mx-20" id="profil-posts">
                 <div class="flex flex-col my-4">
                     {# <h1 class="mb-4">Messages</h1> #}
                     <h1 class="mb-4 font-bold">Received Messages</h1>
@@ -43,11 +43,9 @@
                             </thead>
                             <tbody>
                             {% for message in app.user.received %}
-                                
-                                {% if message.isRead == 0 %}
-                                    {% set bold = "font-bold text-gray-900" %}
-                                {% else %}
                                     {% set bold = "" %}
+                                {% if message.isRead == 0 %}
+                                    {% set bold = "font-bold text-gray-900" %}    
                                 {% endif %}
                                 <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b">
                                     <td class="px-6 py-4 {{bold}}">
@@ -88,5 +86,8 @@
             </div>
         
             {{include('messages/_offcanvas.html.twig')}}
+            <div class="mt-8 " id="foot">
+        {{include('Shared/_footer.html.twig')}}
+    </div>
     </div>
 {% endblock %}

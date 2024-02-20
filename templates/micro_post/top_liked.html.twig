@@ -1,46 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}All Posts{% endblock %}
+{% block title %}Top-Like Posts{% endblock %}
 
 {% block body %}
     
-          <div class="min-h-screen bg-gradient-to-r from-[#D6D6D6] to-[#F9EFD4]">
+       
+    <div> 
+    <div class="bg-gradient-to-r from-[#D6D6D6] to-[#F9EFD4]">
         <div>
             {{include('micro_post/_menu.html.twig')}}
         </div>
-    
-        <div class="min-h-screen grid grid-cols-1 lg:grid-cols-4 gap-4 mx-5 md:mx-15 xl:mx-20">
-            <div class="col-span-1 lg:col-span-3 bg-[#b8b8b8] mt-8 rounded-l-lg">
-            {{include('micro_post/_post_tabs.html.twig')}}
-            {# age ax dasht injorii neshon bede  #}
-                {{include('micro_post/_post_list.html.twig')}}
-                
-                {# age image == null #}
-               
-            </div>
-            <div class="invisible md:visible lg:visible lg:col-span-1 min-h-screen mt-8 rounded-tr-lg">
-                <div class="bg-[#b8b8b8] rounded-tr-xl pb-5 mb-5 h-[350px]">
-                    <h1 class=" border bg-[#e05e21] text-white text-lg font-bold rounded-tr-xl p-3">Follows</h1>
-                    <div class="bg-white mx-3 mt-3 rounded-tr-xl max-h-[260px] overflow-y-auto ">
-                        <div class="m-2 flex items-center space-between">
-                            {% set containerClass = 'grid grid-cols-1 gap-4 ' %}
-                            {{include('follower/_follows_list.html.twig', { users: user.follows, showButton:false, containerClass: containerClass  })}}
+        <div class="mx-3 md:mx-6 lg:mx-8">
+                <div class="home-container ">
+                    <div class="home-post">
+                    {{include('micro_post/_post_tabs.html.twig')}}
+                        <div class="post-scroll">
+                        {% for post in posts %}
+                        {{include('micro_post/_post_list.html.twig')}}
+                        {% endfor %}
                         </div>
                     </div>
-                </div>
-
-                <div class="bg-[#b8b8b8] rounded-tr-xl pb-5 h-[350px]">
-                    <h1 class=" border bg-[#e05e21] text-white text-lg font-bold rounded-tr-xl p-3">Followers</h1>
-                    <div class="bg-white mx-3 mt-3 rounded-tr-xl max-h-[260px] overflow-y-auto">
-                        <div class="m-2 flex items-center space-between">
-                            {% set containerClass = 'grid grid-cols-1 gap-4' %}
-                            {{include('follower/_follows_list.html.twig', { users: user.followers, showButton:false, containerClass: containerClass  })}}
-                        </div>
+                    <div class="home-side">
+                        {{include('micro_post/_sidebar_content.html.twig')}}  
                     </div>
                 </div>
-         
-                
-                
-            </div>
+        </div>
+    <div class="mt-8 ">
+        {{include('Shared/_footer.html.twig')}}
     </div>
+</div>
 {% endblock %}

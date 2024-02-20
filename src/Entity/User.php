@@ -2,16 +2,20 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use PharIo\Manifest\Email;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\UserRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
+
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -20,6 +24,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
+    #[Assert\Email(message: 'This value is not a valid email address.',
+    )]
     private ?string $email = null;
 
     #[ORM\Column]
@@ -29,18 +35,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string The hashed password
      */
     #[ORM\Column]
+    #[Assert\Regex(
+        pattern:"/^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&]){8,}$/",
+        match: false,
+        message:"The password must be at least 8 characters long with at least one lowercase letter, one uppercase letter, one digit, and one special character."
+    )]
     private ?string $password = null;
 
     #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
     private ?UserProfile $userProfile = null;
 
-    #[ORM\ManyToMany(targetEntity: MicroPost::class, mappedBy: 'likedBy')]
+    #[ORM\ManyToMany(targetEntity: MicroPost::class, mappedBy: 'likedBy', orphanRemoval: true)]
     private Collection $liked;
-
-    #[ORM\OneToMany(mappedBy: 'author', targetEntity: MicroPost::class)]
+ 
+    #[ORM\OneToMany(mappedBy: 'author', targetEntity: MicroPost::class, orphanRemoval: true, cascade: ['remove'])]
     private Collection $posts;
 
-    #[ORM\OneToMany(mappedBy: 'author', targetEntity: Comment::class)]
+    #[ORM\OneToMany(mappedBy: 'author', targetEntity: Comment::class, orphanRemoval: true)]
+    #[ORM\JoinColumn(nullable: false)]
     private Collection $comments;
 
     #[ORM\Column(type: 'boolean')]
@@ -58,6 +70,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\OneToMany(mappedBy: 'recipient', targetEntity: Messages::class, orphanRemoval: true)]
     private Collection $received;
+
+    #[ORM\Column(type: 'boolean', options:["default" => true])]
+    private ?bool $isActive = true;
+
+    #[ORM\Column(length: 255)]
+    private ?string $pseudo = null;
 
 
     public function __construct()
@@ -370,6 +388,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __toString()
     {
         return $this->email;
+    }
+
+    public function isActive(): ?bool
+    {
+        return $this->isActive;
+    }
+
+    public function setIsActive(bool $isActive): static
+    {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    public function getPseudo(): ?string
+    {
+        return $this->pseudo;
+    }
+
+    public function setPseudo(string $pseudo): static
+    {
+        $this->pseudo = $pseudo;
+
+        return $this;
     }
 
 }

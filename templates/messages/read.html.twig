@@ -3,11 +3,11 @@
 {% block title %}Received Message{% endblock %}
 
 {% block body %}
-    <div class="min-h-screen bg-gradient-to-r from-[#D6D6D6] to-[#F9EFD4]">
+    <div class="min-h-screen bg-gradient-to-r from-[#D6D6D6] to-[#F9EFD4]" id="contain">
         <div>
             {{include('micro_post/_menu.html.twig')}}
         </div>
-            <div class="flex justify-center mx-5 md:mx-15 xl:mx-20 lg:justify-start">
+            <div class="flex justify-center mx-5 md:mx-15 xl:mx-20 lg:justify-start" id="profil-posts">
                 <div class="flex flex-col mx-6 my-4">
                     {# <h1 class="mb-4">Messages</h1> #}
                     
@@ -42,5 +42,8 @@
             </div>
         
         {{include('messages/_offcanvas.html.twig')}}
+        <div class="mt-8 " id="foot">
+        {{include('Shared/_footer.html.twig')}}
+    </div>
     </div>
 {% endblock %}

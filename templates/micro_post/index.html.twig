@@ -4,187 +4,30 @@
 
 {% block body %}
     
-        
-    <div class="min-h-screen bg-gradient-to-r from-[#D6D6D6] to-[#F9EFD4]">
+<div> 
+    <div class="bg-gradient-to-r from-[#D6D6D6] to-[#F9EFD4]">
         <div>
             {{include('micro_post/_menu.html.twig')}}
         </div>
-    
-        <div class="min-h-screen grid grid-cols-1 lg:grid-cols-4 gap-4 mx-5 md:mx-15 xl:mx-20">
-            <div class="col-span-1 lg:col-span-3 bg-[#b8b8b8] mt-8 rounded-l-lg overflow-y-auto max-h-screen">
-            
-            {{include('micro_post/_post_tabs.html.twig')}}
-           
-                
-                    {{include('micro_post/_post_list.html.twig')}}
-              
-                   
-            </div>
-            <div class="invisible md:visible lg:visible lg:col-span-1 min-h-screen mt-8 rounded-tr-lg">
-                <div class="bg-[#b8b8b8] rounded-tr-xl pb-5 mb-5 h-[350px]">
-                    <h1 class=" border bg-[#e05e21] text-white text-lg font-bold rounded-tr-xl p-3">Follows</h1>
-                    <div class="bg-white mx-3 mt-3 rounded-tr-xl max-h-[260px] overflow-y-auto ">
-                        <div class="m-2 flex items-center space-between">
-                            {% set containerClass = 'grid grid-cols-1 gap-4 ' %}
-                            {{include('follower/_follows_list.html.twig', { users: user.follows, showButton:false, containerClass: containerClass  })}}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-[#b8b8b8] rounded-tr-xl pb-5 h-[350px]">
-                    <h1 class=" border bg-[#e05e21] text-white text-lg font-bold rounded-tr-xl p-3">Followers</h1>
-                    <div class="bg-white mx-3 mt-3 rounded-tr-xl max-h-[260px] overflow-y-auto">
-                        <div class="m-2 flex items-center space-between">
-                            {% set containerClass = 'grid grid-cols-1 gap-4' %}
-                            {{include('follower/_follows_list.html.twig', { users: user.followers, showButton:false, containerClass: containerClass  })}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   {# <main>
-        <div class="s-container"> #}
-            <!-- content menu -->
-        {# <div class="s-content-menu">
-            <div class="you-tweet-other-tweet">
-                <div class="you-tweet">
-                    <div class="s-profile-message">
-                        <span><img src="{{ asset('assets/images/1.jpg') }}" alt=""></span>
-                        <span class="long-text"><input type="text" placeholder="Shared Something with the World "></span>
-                        <span class="small-text"><input type="text" placeholder="Whats Happening?"></span>
-                    </div>
-                    <div class="add-extra">
-                        <button><a href="{{ path('app_micro_post_add') }}">Add post</a></button>
-                    </div>
-                </div>
-                {% for post in posts %}
-                {{include('micro_post/_post.html.twig',{post:post})}}
-                {% endfor %}
-            </div>
-        </div> #}
-        <!-- end of content menu -->
-            
-             <!-- Trending menu -->
-        {# <div class="trending-menu">
-            <div class="trending-center"> #}
-      
-                {# <div class="trending"> 
-                     <div class="s-header">
-                        <p>Whats Happening?</p>
-                    </div> 
-                    <div class="trends">
-                        <!-- Each trend -->
-                        {% for post in posts|slice(0,3) %}
-                        <div class="trend">
-                            <div class="trend-msg">
-                                <div class="trend-name">
-                                    <p>{{post.createdAt |date("M j,Y")}}</p>
-                                </div>
-                                <div class="subject">
-                                    <p>{{post.title}} </p>
-                                </div>
-                                <div class="trend-with">
-                                    <p>Posted By <a href="">{{post.id}}</a></p>
-                                </div>
-                            </div>
-                            <div class="trend-picture">
-                                <img src="1.jpg" alt="" >
-                            </div>
-                        </div>
+        <div class="mx-3 md:mx-6 lg:mx-8">
+                <div class="home-container ">
+                    <div class="home-post">
+                    {{include('micro_post/_post_tabs.html.twig')}}
+                        <div class="post-scroll">
+                        {% for post in posts %}
+                        {{include('micro_post/_post_list.html.twig')}}
                         {% endfor %}
-                        <!--End of Each trend -->
-                        <div class="show-more">
-                            <a href="">Show More</a>
                         </div>
-                    </div> 
-                </div> #}
-            
-                <!-- Follow -->
-                {# <div class="follow">
-                    <div class="s-header">
-                        <p>Who to Follow</p>
                     </div>
-                    <div class="s-persons"> #}
-                        <!-- Each Person -->
-                        {# <div class="person">
-                            <div class="person-profile">
-                                <img src="1.jpg" alt="" >
-                            </div>
-                            <div class="s-name">
-                                <div class="main-name">
-                                    <h3>Sara</h3>
-                                </div>
-                                <div class="s-username">
-                                    <p>@sara</p>
-                                </div>
-                            </div>
-                            <div class="send-follow-request">
-                                <button>Follow</button>
-                            </div>
-                            <div class="button-follow">
-                                <a href="#"><i class="fa-solid fa-user-plus"></i></a>
-                            </div>
-                        </div> #}
-                        <!-- End of Each person -->
-                        
-                        
-                        
-                    {# </div> #}
-                    {# <div class="show-more">
-                        <a href="">Show More</a>
-                    </div> #}
-                {# </div> #}
-                <!-- End Follow -->
-                <!-- Follow -->
-                {# <div class="contact">
-                    <div class="s-header">
-                        <p>Contact</p>
+                    <div class="home-side">
+                        {{include('micro_post/_sidebar_content.html.twig')}}  
                     </div>
-                    <div class="s-persons"> #}
-                    
-                        <!-- Each Person -->
-                        {# <div class="person">
-                            <div class="person-profile">
-                                <img src="1.jpg" alt="" >
-                            </div>
-                            <div class="s-name">
-                                <div class="s-username">
-                                    <p>@sara</p>
-                                </div>
-                                
-                            </div>
-                            <div class="contact-icons">
-                                <a href=""><i class="fa-regular fa-user"></i></a>
-                                <a href=""><i class="fa-regular fa-envelope"></i></a>
-                            </div>
-                        </div> #}
-                        <!-- End of Each person -->  
-                    {# </div>
-                </div> #}
-                <!-- End Follow -->
-            {# </div>
-        </div> #}
-        <!-- End of Trending menu -->
-        {# </div>
-
-    </main> #}
+                </div>
+        </div>
+    <div class="mt-8 ">
+        {{include('Shared/_footer.html.twig')}}
+    </div>
+</div>  
 
 {% endblock %}
 

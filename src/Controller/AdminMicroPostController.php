@@ -6,21 +6,33 @@ use App\Entity\MicroPost;
 use App\Form\MicroPost1Type;
 use App\Repository\MicroPostRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
+
+#[IsGranted('ROLE_ADMIN')]
 #[Route('/admin/micro-post')]
 class AdminMicroPostController extends AbstractController
 {
     #[Route('/', name: 'app_admin_micro_post_index', methods: ['GET'])]
-    public function index(MicroPostRepository $microPostRepository): Response
+    public function index(MicroPostRepository $microPostRepository, Request $request, PaginatorInterface $paginator): Response
     {
+        $pagination = $paginator->paginate(
+            $microPostRepository->paginationQuery(),
+            $request->query->get('page',1),
+            5
+        );
+        
         return $this->render('admin_micro_post/index.html.twig', [
-            'micro_posts' => $microPostRepository->findAll(),
+            
+            'pagination'=>$pagination
+            
         ]);
     }
 

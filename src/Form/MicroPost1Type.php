@@ -16,16 +16,16 @@ class MicroPost1Type extends AbstractType
     {
         $builder
             ->add('title',null,[
-                'label_attr'=> ['class'=>'block text-gray-700 text-sm font-bold mb-2'],
-                'attr'=>['class'=>'shadow appearance-none border rounded w-1/3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline']
+                'label_attr'=> ['class'=>'block text-gray-700 text-sm font-bold mb-2 mt-3'],
+                'attr'=>['class'=>'registration_form_input w-full rounded-md']
             ])
             ->add('text',null,[
-                'label_attr'=> ['class'=>'block text-gray-700 text-sm font-bold mb-2'],
-                'attr'=>['class'=>'shadow appearance-none border rounded w-1/3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline']
+                'label_attr'=> ['class'=>'block text-gray-700 text-sm font-bold mb-2 mt-3'],
+                'attr'=>['class'=>'registration_form_input w-full rounded-md']
             ])
             ->add('author', null,[
-                'label_attr'=> ['class'=>'block text-gray-700 text-sm font-bold mb-2'],
-                'attr'=>['class'=>'shadow appearance-none border rounded w-1/3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline']
+                'label_attr'=> ['class'=>'block text-gray-700 text-sm font-bold mb-2 mt-3'],
+                'attr'=>['class'=>'registration_form_input rounded-md']
             ])
             ->add('postImage', FileType::class, [
                 'label' => 'Post image (JPG or PNG file)',

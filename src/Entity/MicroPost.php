@@ -35,7 +35,7 @@ class MicroPost
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'liked', cascade: ['persist', 'remove'])]
     private Collection $likedBy;
 
-    #[ORM\ManyToOne(inversedBy: 'posts',cascade:['remove'])]
+    #[ORM\ManyToOne(inversedBy: 'posts')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $author = null;
 

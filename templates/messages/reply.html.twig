@@ -3,11 +3,11 @@
 {% block title %}Message{% endblock %}
 
 {% block body %}
-    <div class="min-h-screen bg-gradient-to-r from-[#D6D6D6] to-[#F9EFD4]">
+    <div class="min-h-screen bg-gradient-to-r from-[#D6D6D6] to-[#F9EFD4]" id="contain">
         <div>
             {{include('micro_post/_menu.html.twig')}}
         </div>
-            <div class="mx-2 md:mx-15 xl:mx-20">
+            <div class="mx-2 md:mx-15 xl:mx-20" id="profil-posts">
                 <div class="flex flex-col mx-6 my-4">
                     <h1 class="mb-4 font-bold">Reply</h1>
                     <span class="flex justify-start md:ml-12">
@@ -17,7 +17,7 @@
                             </svg>
                             <h1 class="mb-4 mr-8 font-bold text-base border-b-2 border-gray-600"><a href="{{path('app_messages_received')}}">All Inbox</a></h1> 
                         </div>
-                        <h1 class="mb-4  font-bold text-base border-b-2 border-gray-600 type="button" data-drawer-target="drawer-example" data-drawer-show="drawer-example" aria-controls="drawer-example""><a href="#">MailBoxes</a></h1> 
+                        <h1 class="mb-4 font-bold text-base border-b-2 border-gray-600 type="button" data-drawer-target="drawer-example" data-drawer-show="drawer-example" aria-controls="drawer-example""><a href="#">MailBoxes</a></h1> 
 
                     </span>
                     {{include('messages/_form.html.twig')}}
@@ -25,5 +25,8 @@
             </div>
         
         {{include('messages/_offcanvas.html.twig')}}
+        <div class="mt-8 " id="foot">
+        {{include('Shared/_footer.html.twig')}}
+    </div>
     </div>
 {% endblock %}

@@ -1,0 +1,68 @@
+.registration_form_input:hover{
+    border-bottom: 2px solid #1b734a !important;
+    border-right: 2px solid #1b734a !important;
+    box-shadow: none !important;
+}
+
+
+.registration_form_input:focus{
+    border: 2px solid #1b734a;
+}
+.registration_form_input:focus {
+    --tw-ring-color: transparent;
+}
+.registration_form_input{
+    --tw-ring-color: transparent
+}
+#registration_form_agreeTerms{
+    color:#1b734a
+}
+.agree_to_term, .login-link-reg{
+    font-weight: 600;
+    color: #1b734a;
+}
+
+.agree_to_term:hover, .login-link-reg:hover{
+    text-decoration: underline;
+    text-decoration-style: double;
+    text-decoration-color:#ee670d;
+    color: #1b734a;
+    font-weight: 1000;
+}
+[type="button"], [type="reset"], [type="submit"], button .form-butt-reg{
+    background-color: transparent;
+    background-image: none;
+}
+[type="button"], [type="reset"], [type="submit"], button .form-butt-reg{
+    padding:10px 30px ;
+    background-image: linear-gradient(to right, #ee670d , #e99343) !important;
+    border-radius: 5px;
+    margin: 10px 0;
+    font-size: large;
+    font-weight: 900;
+    color: white;
+    border: 2px solid #ee670d;
+}
+.form-butt-reg:hover{
+    border: 2px solid #337F5B;
+    color: #1b734a;
+    font-weight: 800;
+}
+.butt-text-reg{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.change-image-profile{
+    border: 2px solid transparent;
+}
+
+
+
+
+
+
+
+
+

@@ -3,41 +3,50 @@
 {% block title %}UserProfile index{% endblock %}
 
 {% block body %}
-    <h1>UserProfile index</h1>
+    {{include('admin_shared/_menu.html.twig')}}
+    
+    <div class="p-4 mt-10 sm:ml-64">
+        <h1 class="font-bold text-xl mt-10">UserProfile Administration</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Bio</th>
-                <th>Profession</th>
-                <th>DateOfBirth</th>
-                <th>Image</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for user_profile in user_profiles %}
-            <tr>
-                <td>{{ user_profile.id }}</td>
-                <td>{{ user_profile.name }}</td>
-                <td>{{ user_profile.bio }}</td>
-                <td>{{ user_profile.profession }}</td>
-                <td>{{ user_profile.dateOfBirth ? user_profile.dateOfBirth|date('Y-m-d') : '' }}</td>
-                <td>{{ user_profile.image }}</td>
-                <td>
-                    <a href="{{ path('app_admin_user_profile_show', {'id': user_profile.id}) }}">show</a>
-                    <a href="{{ path('app_admin_user_profile_edit', {'id': user_profile.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_admin_user_profile_new') }}">Create new</a>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-10">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500 "> 
+                <thead class="text-xs text-gray-700 uppercase bg-gray-200">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">Id</th>
+                        <th scope="col" class="px-6 py-3">Pseudo</th>
+                        <th scope="col" class="px-6 py-3">Name</th>
+                        <th scope="col" class="px-6 py-3">Bio</th>
+                        <th scope="col" class="px-6 py-3">Profession</th>
+                        <th scope="col" class="px-6 py-3">Date_Of_Birth</th>
+                        <th scope="col" class="px-6 py-3">Avatar</th>
+                        <th scope="col" class="px-6 py-3">actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for user_profile in pagination %}
+                    <tr class="bg-white border-b">
+                        <td class="px-6 py-4">{{ user_profile.id }}</td>
+                        <td class="px-6 py-4">{{ user_profile.user.pseudo }}</td>
+                        <td class="px-6 py-4">{{ user_profile.name }}</td>
+                        <td class="px-6 py-4">{{ user_profile.bio }}</td>
+                        <td class="px-6 py-4">{{ user_profile.profession }}</td>
+                        <td class="px-6 py-4">{{ user_profile.dateOfBirth ? user_profile.dateOfBirth|date('Y-m-d') : ''}}</td>
+                        <td class="px-6 py-4">{{ user_profile.image }}</td>
+                        <td class="px-6 py-4 flex">
+                            <a class="font-medium text-[#1b734a] hover:underline hover:decoration-[#ee670d] mr-3" href="{{ path('app_admin_user_profile_show', {'id': user_profile.id}) }}">show</a>
+                            <a class="font-medium text-[#1b734a] hover:underline hover:decoration-[#ee670d]" href="{{ path('app_admin_user_profile_edit', {'id': user_profile.id}) }}">edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    <div class="flex justify-center mt-4">
+            {{knp_pagination_render(pagination)}}
+        </div>
+    </div>
 {% endblock %}

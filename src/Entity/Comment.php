@@ -17,7 +17,7 @@ class Comment
     #[ORM\Column(length: 500)]
     private ?string $text = null;
 
-    #[ORM\ManyToOne(inversedBy: 'comments', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(inversedBy: 'comments', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?MicroPost $post = null;
 

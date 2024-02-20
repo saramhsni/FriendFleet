@@ -11,11 +11,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class LikeController extends AbstractController
 {
     #[Route('/like/{id}', name: 'app_like')]
-    public function like(MicroPost $post,MicroPostRepository $posts, $id, EntityManagerInterface $manager, Request $request): Response
+    #[IsGranted('IS_AUTHENTICATED_FULLY')]
+    public function like(MicroPost $post, $id, EntityManagerInterface $manager, Request $request): Response
     {
        
         $currentUser = $this->getUser();
@@ -24,10 +26,11 @@ class LikeController extends AbstractController
         $manager->persist($post);
         $manager->flush();
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($request->headers->get('referer').'#detail'.$id);
     }
 
     #[Route('/unlike/{id}', name: 'app_unlike')]
+    #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function unlike(MicroPost $post, MicroPostRepository $posts, $id, EntityManagerInterface $manager, Request $request): Response
     {
         
@@ -37,7 +40,7 @@ class LikeController extends AbstractController
         $manager->persist($post);
         $manager->flush();
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($request->headers->get('referer').'#detail'.$id);
         
     }
 }

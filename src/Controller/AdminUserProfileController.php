@@ -4,21 +4,28 @@ namespace App\Controller;
 
 use App\Entity\UserProfile;
 use App\Form\UserProfile1Type;
-use App\Repository\UserProfileRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\UserProfileRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
-#[Route('/admin/user/profile')]
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+#[IsGranted('ROLE_ADMIN')]
+#[Route('/admin/user-profile')]
 class AdminUserProfileController extends AbstractController
 {
     #[Route('/', name: 'app_admin_user_profile_index', methods: ['GET'])]
-    public function index(UserProfileRepository $userProfileRepository): Response
+    public function index(UserProfileRepository $userProfileRepository, Request $request, PaginatorInterface $paginator): Response
     {
+        $pagination = $paginator->paginate(
+            $userProfileRepository->paginationQuery(),
+            $request->query->get('page',1),
+            5
+        );
         return $this->render('admin_user_profile/index.html.twig', [
-            'user_profiles' => $userProfileRepository->findAll(),
+            'pagination'=>$pagination
         ]);
     }
 

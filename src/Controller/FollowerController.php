@@ -24,7 +24,7 @@ class FollowerController extends AbstractController
            $currentUser = $this->getUser();
 
            // Vérifie si l'utilisateur à suivre n'est pas l'utilisateur actuel
-           if ($userToFollow->getId() !== $currentUser->getId()) {
+           if ($userToFollow->getId() !== $currentUser->getId() && $userToFollow->isActive()==true) {
                // Appelle la méthode follow de l'utilisateur actuel pour suivre l'utilisateur spécifié
                $currentUser->follow($userToFollow);
                
